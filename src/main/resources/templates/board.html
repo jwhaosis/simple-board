@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+    <script th:inline="javascript">
+    var divSize = document.documentElement.clientWidth * 0.5;
+    var board = /*[[${board}]]*/ 'default'
+    var boardSize = /*[[${boardSize}]]*/ 'default'
+    var tableDiv = document.createElement("div");
+    tableDiv.style = `width:${divSize}px; height:${divSize}px`;
+    var table = document.createElement("table");
+    table.style = `width:${divSize}px; height:${divSize}px`;
+    for (var i = 0; i < boardSize; i++) {
+        var tr = document.createElement('tr');
+        for (var j = 0; j < boardSize; j++) {
+            var td = document.createElement('td');
+            if (board.charAt(j + i * boardSize) == 0) {
+                td.style.backgroundColor = "black";
+            } else {
+                td.style.backgroundColor = "white";
+            }
+            tr.appendChild(td);
+        }
+        table.appendChild(tr);
+    }
+    tableDiv.appendChild(table);
+    document.body.appendChild(tableDiv);
+	</script>
+</body>
+</html>
